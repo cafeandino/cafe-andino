@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Andino - Café de Especialidad de los Andes Peruanos</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#1C120C',      /* Marrón café muy oscuro */
+                            roasted: '#3D2314',   /* Marrón tostado medio */
+                            amber: '#8B4513',     /* Tono terracota / ámbar */
+                            gold: '#D4AF37',      /* Dorado elegante */
+                            goldlight: '#F3E5AB',
+                            cream: '#FAF6F0',     /* Crema cálido para fondo */
+                            creamdark: '#F0E6D8',
+                            green: '#2D4A3E',     /* Verde follaje andino */
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Marcellus', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(28, 18, 12, 0.75) 0%, rgba(28, 18, 12, 0.85) 100%);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #FAF6F0;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #8B4513;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-brand-dark font-sans antialiased selection:bg-brand-gold selection:text-brand-dark">
+
+    <!-- Header / Nav -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 bg-brand-dark/95 backdrop-blur-md text-brand-cream border-b border-brand-gold/20 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-gold to-brand-amber flex items-center justify-center text-brand-dark shadow-md transform group-hover:rotate-12 transition-transform duration-300">
+                    <i class="fa-solid fa-mountain text-lg"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif text-2xl tracking-wider text-brand-cream font-bold group-hover:text-brand-gold transition-colors">CAFÉ ANDINO</span>
+                    <span class="text-[10px] tracking-widest text-brand-gold uppercase -mt-1 font-medium">Origen Perú &bull; +1800m</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
+                <a href="#inicio" class="hover:text-brand-gold transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-gold hover:after:w-full after:transition-all">Inicio</a>
+                <a href="#nosotros" class="hover:text-brand-gold transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-gold hover:after:w-full after:transition-all">Sobre Nosotros</a>
+                <a href="#variedades" class="hover:text-brand-gold transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-gold hover:after:w-full after:transition-all">Variedades</a>
+                <a href="#menu" class="hover:text-brand-gold transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-gold hover:after:w-full after:transition-all">Menú Cafetería</a>
+                <a href="#quiz" class="hover:text-brand-gold transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-gold hover:after:w-full after:transition-all">Test Tu Café Ideal</a>
+                <a href="#contacto" class="hover:text-brand-gold transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-brand-gold hover:after:w-full after:transition-all">Reservas</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="hidden sm:flex items-center gap-4">
+                <button onclick="toggleCart()" class="relative p-2.5 text-brand-cream hover:text-brand-gold transition-colors" aria-label="Ver carrito">
+                    <i class="fa-solid fa-shopping-bag text-xl"></i>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-brand-gold text-brand-dark text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                </button>
+                <a href="#contacto" class="bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-semibold px-5 py-2.5 rounded-full hover:shadow-lg hover:shadow-brand-gold/20 hover:scale-105 transition-all text-sm">
+                    Reservar Mesa
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="flex items-center gap-3 md:hidden">
+                <button onclick="toggleCart()" class="relative p-2 text-brand-cream hover:text-brand-gold">
+                    <i class="fa-solid fa-shopping-bag text-xl"></i>
+                    <span id="cart-badge-mobile" class="absolute -top-1 -right-1 bg-brand-gold text-brand-dark text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                </button>
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-brand-cream p-2 focus:outline-none">
+                    <i id="mobile-menu-icon" class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-b border-brand-gold/20 px-6 py-6 space-y-4">
+            <a href="#inicio" onclick="toggleMobileMenu()" class="block text-brand-cream hover:text-brand-gold text-lg">Inicio</a>
+            <a href="#nosotros" onclick="toggleMobileMenu()" class="block text-brand-cream hover:text-brand-gold text-lg">Sobre Nosotros</a>
+            <a href="#variedades" onclick="toggleMobileMenu()" class="block text-brand-cream hover:text-brand-gold text-lg">Variedades de Café</a>
+            <a href="#menu" onclick="toggleMobileMenu()" class="block text-brand-cream hover:text-brand-gold text-lg">Menú Cafetería</a>
+            <a href="#quiz" onclick="toggleMobileMenu()" class="block text-brand-cream hover:text-brand-gold text-lg">Descubre tu Café Ideal</a>
+            <a href="#contacto" onclick="toggleMobileMenu()" class="block text-brand-cream hover:text-brand-gold text-lg">Contacto & Reservas</a>
+            <a href="#contacto" onclick="toggleMobileMenu()" class="block w-full text-center bg-brand-gold text-brand-dark font-bold py-3 rounded-xl mt-4">
+                Reservar Mesa
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 bg-brand-dark overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=1920" 
+                 alt="Finca de Café en los Andes" 
+                 class="w-full h-full object-cover opacity-30 transform scale-105 animate-pulse" 
+                 style="animation-duration: 10s;">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/70 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-brand-cream my-12">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-xs sm:text-sm font-medium tracking-widest uppercase mb-6 backdrop-blur-sm">
+                <i class="fa-solid fa-award"></i> 100% Arábica de Especialidad Peruano
+            </div>
+            
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 leading-tight text-glow">
+                Del corazón de los Andes <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-yellow-200 to-brand-amber">a tu taza</span>
+            </h1>
+
+            <p class="text-base sm:text-xl text-brand-creamdark/90 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                Descubre matices únicos cosechados a más de 1,800 metros de altitud. Granos seleccionados a mano por familias caficultoras del Perú.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#variedades" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-bold rounded-full shadow-lg hover:shadow-brand-gold/30 hover:scale-105 transition-all text-center">
+                    Explorar Variedades <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                </a>
+                <a href="#quiz" class="w-full sm:w-auto px-8 py-4 bg-brand-roasted/80 text-brand-cream border border-brand-gold/30 rounded-full hover:bg-brand-roasted hover:border-brand-gold transition-all text-center backdrop-blur-sm">
+                    <i class="fa-solid fa-wand-magic-sparkles mr-2 text-brand-gold"></i> Test: Encuentra tu Café
+                </a>
+            </div>
+
+            <!-- Highlights Footer inside Hero -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-8 border-t border-brand-gold/20 text-center">
+                <div class="p-3">
+                    <p class="font-serif text-2xl md:text-3xl font-bold text-brand-gold">+1,800m</p>
+                    <p class="text-xs text-brand-creamdark/70 uppercase tracking-wider mt-1">Altitud de Cultivo</p>
+                </div>
+                <div class="p-3">
+                    <p class="font-serif text-2xl md:text-3xl font-bold text-brand-gold">+86 pts</p>
+                    <p class="text-xs text-brand-creamdark/70 uppercase tracking-wider mt-1">Puntaje de Cata SCA</p>
+                </div>
+                <div class="p-3">
+                    <p class="font-serif text-2xl md:text-3xl font-bold text-brand-gold">100%</p>
+                    <p class="text-xs text-brand-creamdark/70 uppercase tracking-wider mt-1">Comercio Justo</p>
+                </div>
+                <div class="p-3">
+                    <p class="font-serif text-2xl md:text-3xl font-bold text-brand-gold">Artesanal</p>
+                    <p class="text-xs text-brand-creamdark/70 uppercase tracking-wider mt-1">Tueste en Lotes Pequeños</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nosotros / Historia -->
+    <section id="nosotros" class="py-20 bg-brand-cream relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left Image Composition -->
+                <div class="relative">
+                    <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=800" 
+                             alt="Preparación de Café de Especialidad" 
+                             class="w-full h-[450px] object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 z-20 w-48 h-48 bg-brand-roasted rounded-2xl p-4 text-brand-cream shadow-xl hidden sm:flex flex-col justify-center border border-brand-gold/30">
+                        <i class="fa-solid fa-leaf text-brand-gold text-3xl mb-2"></i>
+                        <p class="font-serif font-bold text-lg leading-tight">Sostenibilidad Andina</p>
+                        <p class="text-xs text-brand-creamdark/80 mt-1">Respetando el suelo y honrando la tradición.</p>
+                    </div>
+                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-brand-gold/20 rounded-full blur-2xl -z-10"></div>
+                </div>
+
+                <!-- Right Content -->
+                <div class="space-y-6">
+                    <div class="inline-block px-3 py-1 bg-brand-amber/10 text-brand-amber rounded-full text-xs font-bold uppercase tracking-widest">
+                        Nuestra Esencia
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark leading-tight">
+                        Cultura, altura y pasión en cada grano
+                    </h2>
+                    <p class="text-brand-dark/80 leading-relaxed font-normal">
+                        <strong>Café Andino</strong> nace en los fértiles valles de Cusco, Cajamarca y Junín. Trabajamos de la mano con familias caficultoras de los Andes peruanos, promoviendo el <em>comercio justo</em> y garantizando prácticas agrícolas que preservan la biodiversidad de la selva alta.
+                    </p>
+                    <p class="text-brand-dark/80 leading-relaxed font-normal">
+                        Los microclimados andinos, combinados con suelos volcánicos ricos en minerales y una maduración lenta provocada por la altura, dan origen a un café de especialidad complejo, dulce y con acidez brillante inolvidable.
+                    </p>
+
+                    <!-- Feature Badges -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+                        <div class="p-4 rounded-xl bg-white shadow-sm border border-brand-creamdark flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-brand-green/10 text-brand-green flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-seedling"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Ecológico</h4>
+                                <p class="text-xs text-gray-500">Cosecha manual</p>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white shadow-sm border border-brand-creamdark flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-brand-amber/10 text-brand-amber flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-fire text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Tueste Medio</h4>
+                                <p class="text-xs text-gray-500">Perfil a medida</p>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white shadow-sm border border-brand-creamdark flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-brand-gold/20 text-brand-dark flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-hands-holding-child"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Comunitario</h4>
+                                <p class="text-xs text-gray-500">Impacto directo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Variedades de Café (E-commerce interactivo) -->
+    <section id="variedades" class="py-20 bg-brand-dark text-brand-cream relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-gold text-xs font-bold uppercase tracking-widest">Nuestra Colección de Granos</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-2">Cafés de Origen Único</h2>
+                <p class="text-brand-creamdark/80 text-sm sm:text-base mt-3">
+                    Selecciona tu origen preferido. Cada bolsa contiene café fresco tostado semanalmente en lotes limitados.
+                </p>
+
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mt-8" id="origin-filters">
+                    <button onclick="filterCoffee('todos', this)" class="filter-btn active px-5 py-2 rounded-full text-xs font-semibold bg-brand-gold text-brand-dark shadow-md transition-all">
+                        Todos los Origines
+                    </button>
+                    <button onclick="filterCoffee('cusco', this)" class="filter-btn px-5 py-2 rounded-full text-xs font-semibold bg-brand-roasted text-brand-cream hover:bg-brand-gold hover:text-brand-dark transition-all border border-brand-gold/30">
+                        Cusco (Quillabamba)
+                    </button>
+                    <button onclick="filterCoffee('cajamarca', this)" class="filter-btn px-5 py-2 rounded-full text-xs font-semibold bg-brand-roasted text-brand-cream hover:bg-brand-gold hover:text-brand-dark transition-all border border-brand-gold/30">
+                        Cajamarca (Jaén)
+                    </button>
+                    <button onclick="filterCoffee('chanchamayo', this)" class="filter-btn px-5 py-2 rounded-full text-xs font-semibold bg-brand-roasted text-brand-cream hover:bg-brand-gold hover:text-brand-dark transition-all border border-brand-gold/30">
+                        Junín (Chanchamayo)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Coffee Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="coffee-grid">
+                <!-- Javascript Inserted Cards -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz interactivo: Encuentra tu Café Ideal -->
+    <section id="quiz" class="py-20 bg-gradient-to-br from-brand-roasted via-brand-dark to-brand-dark text-brand-cream relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-dark/90 border border-brand-gold/30 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden backdrop-blur-md">
+                
+                <!-- Background Accent -->
+                <div class="absolute -top-24 -right-24 w-60 h-60 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="text-center mb-8">
+                    <span class="inline-block p-3 rounded-full bg-brand-gold/10 text-brand-gold mb-3">
+                        <i class="fa-solid fa-wand-magic-sparkles text-2xl"></i>
+                    </span>
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold">¿No sabes cuál elegir?</h2>
+                    <p class="text-brand-creamdark/80 text-sm mt-1">Responde 2 preguntas y descubre el café perfecto para tu paladar.</p>
+                </div>
+
+                <!-- Quiz Container -->
+                <div id="quiz-container" class="space-y-8">
+                    <!-- Step 1 -->
+                    <div id="quiz-step-1" class="quiz-step">
+                        <p class="font-semibold text-center mb-4 text-brand-gold">1. ¿Qué perfil de sabor prefieres en tu taza?</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <button onclick="selectQuizOption(1, 'dulce')" class="quiz-option-btn p-4 rounded-xl border border-brand-gold/20 bg-brand-roasted/50 hover:border-brand-gold hover:bg-brand-gold/10 transition-all text-center group">
+                                <i class="fa-solid fa-cookie text-2xl text-brand-gold mb-2 group-hover:scale-110 transition-transform"></i>
+                                <h4 class="font-bold text-sm">Dulce & Chocolate</h4>
+                                <p class="text-xs text-brand-creamdark/70 mt-1">Notas a cacao, caramelo y frutos secos.</p>
+                            </button>
+                            <button onclick="selectQuizOption(1, 'frutal')" class="quiz-option-btn p-4 rounded-xl border border-brand-gold/20 bg-brand-roasted/50 hover:border-brand-gold hover:bg-brand-gold/10 transition-all text-center group">
+                                <i class="fa-solid fa-apple-whole text-2xl text-brand-gold mb-2 group-hover:scale-110 transition-transform"></i>
+                                <h4 class="font-bold text-sm">Frutal & Floral</h4>
+                                <p class="text-xs text-brand-creamdark/70 mt-1">Notas a jazmín, frutos rojos y cítricos.</p>
+                            </button>
+                            <button onclick="selectQuizOption(1, 'intenso')" class="quiz-option-btn p-4 rounded-xl border border-brand-gold/20 bg-brand-roasted/50 hover:border-brand-gold hover:bg-brand-gold/10 transition-all text-center group">
+                                <i class="fa-solid fa-fire-flame-curved text-2xl text-brand-gold mb-2 group-hover:scale-110 transition-transform"></i>
+                                <h4 class="font-bold text-sm">Intenso & Especiado</h4>
+                                <p class="text-xs text-brand-creamdark/70 mt-1">Cuerpo alto, notas a canela y tueste marcado.</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 (Hidden Initially) -->
+                    <div id="quiz-step-2" class="quiz-step hidden">
+                        <p class="font-semibold text-center mb-4 text-brand-gold">2. ¿Cómo sueles preparar tu café?</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <button onclick="selectQuizOption(2, 'filtro')" class="quiz-option-btn p-4 rounded-xl border border-brand-gold/20 bg-brand-roasted/50 hover:border-brand-gold hover:bg-brand-gold/10 transition-all text-center group">
+                                <i class="fa-solid fa-filter text-2xl text-brand-gold mb-2 group-hover:scale-110 transition-transform"></i>
+                                <h4 class="font-bold text-sm">Métodos de Filtro</h4>
+                                <p class="text-xs text-brand-creamdark/70 mt-1">V60, Chemex, Cafetera de goteo.</p>
+                            </button>
+                            <button onclick="selectQuizOption(2, 'espresso')" class="quiz-option-btn p-4 rounded-xl border border-brand-gold/20 bg-brand-roasted/50 hover:border-brand-gold hover:bg-brand-gold/10 transition-all text-center group">
+                                <i class="fa-solid fa-mug-hot text-2xl text-brand-gold mb-2 group-hover:scale-110 transition-transform"></i>
+                                <h4 class="font-bold text-sm">Espresso / Moka</h4>
+                                <p class="text-xs text-brand-creamdark/70 mt-1">Cafetera italiana o Máquina de espresso.</p>
+                            </button>
+                            <button onclick="selectQuizOption(2, 'prensa')" class="quiz-option-btn p-4 rounded-xl border border-brand-gold/20 bg-brand-roasted/50 hover:border-brand-gold hover:bg-brand-gold/10 transition-all text-center group">
+                                <i class="fa-solid fa-glass-water text-2xl text-brand-gold mb-2 group-hover:scale-110 transition-transform"></i>
+                                <h4 class="font-bold text-sm">Prensa Francesa / Inmersión</h4>
+                                <p class="text-xs text-brand-creamdark/70 mt-1">Extracción directa y con cuerpo.</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Result Step (Hidden Initially) -->
+                    <div id="quiz-result" class="quiz-step hidden text-center space-y-4 py-4">
+                        <div class="inline-block px-4 py-1 bg-brand-gold/20 text-brand-gold rounded-full text-xs font-bold uppercase">
+                            Tu Recomendación Personalizada
+                        </div>
+                        <h3 id="quiz-recommended-title" class="font-serif text-2xl font-bold text-brand-gold">Geisha de Cusco</h3>
+                        <p id="quiz-recommended-desc" class="text-brand-creamdark text-sm max-w-md mx-auto">
+                            Por tu gusto por notas frutales y preparación en filtro, esta variedad resaltará la acidez elegante y cuerpo sedoso.
+                        </p>
+                        <div class="pt-4 flex justify-center gap-4">
+                            <button id="quiz-add-btn" class="px-6 py-3 bg-brand-gold text-brand-dark font-bold rounded-full hover:scale-105 transition-all text-sm">
+                                <i class="fa-solid fa-cart-plus mr-2"></i> Añadir a Carrito
+                            </button>
+                            <button onclick="resetQuiz()" class="px-6 py-3 border border-brand-gold/30 text-brand-cream rounded-full hover:bg-brand-roasted transition-all text-sm">
+                                Reiniciar Test
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Menú de la Cafetería (Carta Interactiva) -->
+    <section id="menu" class="py-20 bg-brand-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-amber text-xs font-bold uppercase tracking-widest">Experiencia en Nuestro Local</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark mt-2">Carta de la Cafetería</h2>
+                <p class="text-brand-dark/70 text-sm sm:text-base mt-2">
+                    Visita nuestro establecimiento y disfruta de extracciones en vivo preparadas por nuestros barista profesionales.
+                </p>
+
+                <!-- Menu Tabs -->
+                <div class="flex flex-wrap justify-center gap-2 mt-8 border-b border-brand-creamdark pb-4">
+                    <button onclick="switchMenuTab('especialidad', this)" class="menu-tab-btn active px-4 py-2 rounded-lg font-serif font-bold text-sm bg-brand-roasted text-brand-cream shadow-sm transition-all">
+                        Cafés de Especialidad
+                    </button>
+                    <button onclick="switchMenuTab('metodos', this)" class="menu-tab-btn px-4 py-2 rounded-lg font-serif font-bold text-sm text-brand-dark hover:bg-brand-creamdark transition-all">
+                        Métodos de Extracción
+                    </button>
+                    <button onclick="switchMenuTab('frias', this)" class="menu-tab-btn px-4 py-2 rounded-lg font-serif font-bold text-sm text-brand-dark hover:bg-brand-creamdark transition-all">
+                        Bebidas Frías
+                    </button>
+                    <button onclick="switchMenuTab('reposteria', this)" class="menu-tab-btn px-4 py-2 rounded-lg font-serif font-bold text-sm text-brand-dark hover:bg-brand-creamdark transition-all">
+                        Acompañamientos
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu Content List -->
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6" id="menu-items-container">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería Visual -->
+    <section class="py-16 bg-brand-dark text-brand-cream overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
+            <span class="text-brand-gold text-xs font-bold uppercase tracking-widest">Momentos Café Andino</span>
+            <h2 class="font-serif text-3xl font-bold mt-1">Galería de Experiencias</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 px-4">
+            <div class="h-64 rounded-xl overflow-hidden group relative">
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=600" alt="Cafetería" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-brand-dark/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="font-serif text-sm font-bold text-brand-gold">Nuestra Barra</span>
+                </div>
+            </div>
+            <div class="h-64 rounded-xl overflow-hidden group relative">
+                <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&q=80&w=600" alt="Granos de Café" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-brand-dark/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="font-serif text-sm font-bold text-brand-gold">Tueste Fresco</span>
+                </div>
+            </div>
+            <div class="h-64 rounded-xl overflow-hidden group relative">
+                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=600" alt="Latte Art" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-brand-dark/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="font-serif text-sm font-bold text-brand-gold">Latte Art</span>
+                </div>
+            </div>
+            <div class="h-64 rounded-xl overflow-hidden group relative">
+                <img src="https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&q=80&w=600" alt="Método Chemex" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <div class="absolute inset-0 bg-brand-dark/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="font-serif text-sm font-bold text-brand-gold">Filtrados Artesanales</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservas y Contacto -->
+    <section id="contacto" class="py-20 bg-brand-cream relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Info Left -->
+                <div class="space-y-6">
+                    <span class="text-brand-amber text-xs font-bold uppercase tracking-widest">Encuéntranos</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-dark">Reserva tu mesa o visítanos</h2>
+                    <p class="text-brand-dark/80 text-sm leading-relaxed">
+                        Te esperamos en un ambiente acogedor inspirado en la arquitectura andina con aromas que invitan a quedarse.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-amber/10 text-brand-amber flex items-center justify-center shrink-0 font-bold">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-brand-dark">Dirección Principal</h4>
+                                <p class="text-xs text-gray-600 mt-0.5">Av. San Martín 420, Barranco / Cusco Centro Histórico</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-amber/10 text-brand-amber flex items-center justify-center shrink-0 font-bold">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-brand-dark">Horario de Atención</h4>
+                                <p class="text-xs text-gray-600 mt-0.5">Lunes a Domingo: 7:00 am - 10:00 pm</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-amber/10 text-brand-amber flex items-center justify-center shrink-0 font-bold">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-brand-dark">Contacto Directo</h4>
+                                <p class="text-xs text-gray-600 mt-0.5">+51 (01) 458-9201 / reservas@cafeandino.pe</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Networks -->
+                    <div class="pt-6">
+                        <h4 class="font-bold text-xs uppercase tracking-wider text-gray-500 mb-3">Síguenos en redes</h4>
+                        <div class="flex gap-3">
+                            <a href="#" class="w-10 h-10 rounded-full bg-brand-roasted text-brand-cream hover:bg-brand-gold hover:text-brand-dark transition-all flex items-center justify-center"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-brand-roasted text-brand-cream hover:bg-brand-gold hover:text-brand-dark transition-all flex items-center justify-center"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-brand-roasted text-brand-cream hover:bg-brand-gold hover:text-brand-dark transition-all flex items-center justify-center"><i class="fa-brands fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Right -->
+                <div class="bg-white p-8 rounded-3xl shadow-xl border border-brand-creamdark relative">
+                    <h3 class="font-serif text-2xl font-bold text-brand-dark mb-6">Formulario de Reserva</h3>
+                    
+                    <form id="booking-form" onsubmit="handleBooking(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nombre Completo</label>
+                                <input type="text" required placeholder="Ej: María Córdoba" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-amber text-sm bg-brand-cream/30">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Correo Electrónico</label>
+                                <input type="email" required placeholder="maria@ejemplo.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-amber text-sm bg-brand-cream/30">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Fecha</label>
+                                <input type="date" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-amber text-sm bg-brand-cream/30">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Hora</label>
+                                <input type="time" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-amber text-sm bg-brand-cream/30">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Personas</label>
+                                <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-amber text-sm bg-brand-cream/30">
+                                    <option>1 Persona</option>
+                                    <option selected>2 Personas</option>
+                                    <option>4 Personas</option>
+                                    <option>6+ Personas</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Comentario o Solicitud Especial</label>
+                            <textarea rows="3" placeholder="Ej: Celebración de aniversario, mesa cerca a la ventana..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-amber text-sm bg-brand-cream/30"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-brand-roasted text-brand-gold font-bold rounded-xl hover:bg-brand-dark transition-colors shadow-lg text-sm tracking-wide uppercase">
+                            Confirmar Reserva
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-brand-creamdark pt-16 pb-8 border-t border-brand-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-brand-gold/10">
+                
+                <!-- Col 1 -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-brand-gold text-brand-dark flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-mountain text-sm"></i>
+                        </div>
+                        <span class="font-serif text-xl font-bold text-brand-cream">CAFÉ ANDINO</span>
+                    </div>
+                    <p class="text-xs text-brand-creamdark/70 leading-relaxed">
+                        Café peruano de especialidad cosechado en microclimas andinos. Sostenibilidad, calidad y respeto por el origen.
+                    </p>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="font-serif text-brand-gold font-bold mb-4 text-sm">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#inicio" class="hover:text-brand-gold transition-colors">Inicio</a></li>
+                        <li><a href="#nosotros" class="hover:text-brand-gold transition-colors">Nuestra Historia</a></li>
+                        <li><a href="#variedades" class="hover:text-brand-gold transition-colors">Comprar Café en Grano</a></li>
+                        <li><a href="#menu" class="hover:text-brand-gold transition-colors">Carta de la Cafetería</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="font-serif text-brand-gold font-bold mb-4 text-sm">Origen & Calidad</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li>Cusco - Quillabamba (1900m)</li>
+                        <li>Cajamarca - Jaén (1850m)</li>
+                        <li>Junín - Chanchamayo (1750m)</li>
+                        <li>Proceso de Tueste Artesanal</li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 (Newsletter) -->
+                <div>
+                    <h4 class="font-serif text-brand-gold font-bold mb-3 text-sm">Suscripción al Club</h4>
+                    <p class="text-xs text-brand-creamdark/70 mb-3">Obtén 10% de descuento en tu primer pedido de café en grano.</p>
+                    <form onsubmit="handleNewsletter(event)" class="flex gap-2">
+                        <input type="email" required placeholder="Tu correo electrónico" class="w-full px-3 py-2 rounded-lg text-xs bg-brand-roasted text-brand-cream border border-brand-gold/30 focus:outline-none focus:border-brand-gold">
+                        <button type="submit" class="px-4 py-2 bg-brand-gold text-brand-dark font-bold text-xs rounded-lg hover:bg-yellow-400 transition-colors">Unirme</button>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-brand-creamdark/50 gap-4">
+                <p>&copy; 2026 Café Andino. Todos los derechos reservados.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:underline">Políticas de Privacidad</a>
+                    <a href="#" class="hover:underline">Términos de Servicio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal / Drawer de Carrito Lateral -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden pointer-events-none transition-opacity duration-300 opacity-0">
+        <!-- Backdrop -->
+        <div id="cart-backdrop" onclick="toggleCart()" class="absolute inset-0 bg-brand-dark/60 backdrop-blur-sm transition-opacity"></div>
+
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div id="cart-panel" class="w-screen max-w-md bg-white shadow-2xl flex flex-col pointer-events-auto transform translate-x-full transition-transform duration-300">
+                
+                <!-- Drawer Header -->
+                <div class="p-6 bg-brand-dark text-brand-cream flex items-center justify-between border-b border-brand-gold/20">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-shopping-bag text-brand-gold"></i>
+                        <h3 class="font-serif text-lg font-bold">Tu Carrito de Compras</h3>
+                    </div>
+                    <button onclick="toggleCart()" class="p-2 text-brand-creamdark hover:text-brand-gold">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Drawer Items -->
+                <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar">
+                    <!-- Items inserted via JS -->
+                </div>
+
+                <!-- Drawer Footer -->
+                <div class="p-6 bg-brand-cream border-t border-brand-creamdark space-y-4">
+                    <div class="flex justify-between items-center text-sm font-bold text-brand-dark">
+                        <span>Subtotal:</span>
+                        <span id="cart-total-price">S/ 0.00</span>
+                    </div>
+                    <p class="text-[11px] text-gray-500 text-center">Envíos a todo el Perú. Envío gratis en compras mayores a S/ 120.</p>
+                    <button onclick="checkout()" class="w-full py-3.5 bg-gradient-to-r from-brand-gold to-brand-amber text-brand-dark font-bold rounded-xl shadow-md hover:scale-[1.02] transition-transform text-sm tracking-wide uppercase">
+                        Finalizar Compra
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast Box -->
+    <div id="toast-msg" class="fixed bottom-6 right-6 z-50 bg-brand-dark text-brand-cream border border-brand-gold px-5 py-3 rounded-xl shadow-2xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-brand-gold text-lg"></i>
+        <span id="toast-text" class="text-xs font-medium">Producto añadido al carrito</span>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Array de Variedades de Café
+        const coffeeProducts = [
+            {
+                id: 'cusco-geisha',
+                name: 'Geisha Reserva Cusco',
+                origin: 'cusco',
+                originName: 'Quillabamba, Cusco (+1,950m)',
+                price: 48.00,
+                notes: ['Jazmín', 'Melocotón', 'Miel de Flor'],
+                roast: 'Tueste Medio Clave',
+                intensity: 3,
+                score: 88 text = '88.5 PTS',
+                image: 'https://images.unsplash.com/photo-1587734195503-904fca47e0e9?auto=format&fit=crop&q=80&w=600',
+                desc: 'Una variedad excepcional de fragancia floral penetrante y cuerpo aterciopelado.'
+            },
+            {
+                id: 'cajamarca-bourbon',
+                name: 'Bourbon Rojo Jaén',
+                origin: 'cajamarca',
+                originName: 'Jaén, Cajamarca (+1,850m)',
+                price: 38.00,
+                notes: ['Chocolate Negro', 'Ciruela', 'Nuez'],
+                roast: 'Tueste Medio Oscuro',
+                intensity: 4,
+                score: '86.5 PTS',
+                image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&q=80&w=600',
+                desc: 'Dulzor acaramelado profundo con acidez acitronada balanceada. Perfecto para espresso.'
+            },
+            {
+                id: 'chanchamayo-typica',
+                name: 'Typica Antiguo Chanchamayo',
+                origin: 'chanchamayo',
+                originName: 'Chanchamayo, Junín (+1,750m)',
+                price: 34.00,
+                notes: ['Cacao', 'Manzana Verde', 'Canela'],
+                roast: 'Tueste Medio',
+                intensity: 3,
+                score: '85.5 PTS',
+                image: 'https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?auto=format&fit=crop&q=80&w=600',
+                desc: 'Sabor tradicional peruano con cuerpo completo y retrogusto prolongado a especias.'
+            },
+            {
+                id: 'cusco-caturra',
+                name: 'Caturra Amarillo Valle Sagrado',
+                origin: 'cusco',
+                originName: 'Calca, Cusco (+1,900m)',
+                price: 42.00,
+                notes: ['Frutos Rojos', 'Mandarina', 'Panela'],
+                roast: 'Tueste Claro',
+                intensity: 2,
+                score: '87.0 PTS',
+                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600',
+                desc: 'Acidez brillante y frutal, ideal para métodos filtrados como V60 y Chemex.'
+            }
+        ];
+
+        // Carta de la Cafetería
+        const menuItems = {
+            especialidad: [
+                { name: 'Espresso Doble Origen', price: 'S/ 9.00', desc: 'Extracción concentrada con crema densa de nuestro grano Cusco Bourbon.' },
+                { name: 'Flat White', price: 'S/ 12.00', desc: 'Doble shot de espresso servido con leche al vapor microtexturizada.' },
+                { name: 'Andino Latte Macchiato', price: 'S/ 13.50', desc: 'Leche sedosa infusionada con jarabe artesanal de chancaca y canela.' },
+                { name: 'Capuchino Tradicional', price: 'S/ 11.50', desc: 'Espresso, leche vaporizada y abundante espuma espolvoreada con cacao cusqueño.' }
+            ],
+            metodos: [
+                { name: 'Método V60', price: 'S/ 14.00', desc: 'Filtrado en cono de cerámica que resalta la acidez limpia y notas florales.' },
+                { name: 'Chemex (2 Personas)', price: 'S/ 22.00', desc: 'Extracción lenta y transparente que resalta la pureza aromática del café.' },
+                { name: 'Prensa Francesa', price: 'S/ 13.00', desc: 'Inmersión completa que otorga un cuerpo robusto y aceites naturales en taza.' },
+                { name: 'Aeropress Spec', price: 'S/ 15.00', desc: 'Extracción a presión ligera con perfil de sabor intenso y suave.' }
+            ],
+            frias: [
+                { name: 'Cold Brew Andino (12h)', price: 'S/ 14.00', desc: 'Café reposado en frío durante 12 horas. Suave, refrescante y bajo en acidez.' },
+                { name: 'Espresso Tonic', price: 'S/ 15.50', desc: 'Shot de espresso de origen sobre agua tónica de frutos amarillos y hielo.' },
+                { name: 'Iced Caramel Latte', price: 'S/ 16.00', desc: 'Café frío con leche fresca, hielo y salsa de caramelo de sal de Maras.' }
+            ],
+            reposteria: [
+                { name: 'Tarta de Queso & Saúco', price: 'S/ 16.00', desc: 'Cheesecake artesanal horneado con mermelada natural de saúco andino.' },
+                { name: 'Pastel de Choclo Dulce', price: 'S/ 10.00', desc: 'Receta tradicional andina acompañante perfecto para un espresso cargado.' },
+                { name: 'Alfajor Artesanal de Maicena', price: 'S/ 7.50', desc: 'Relleno de abundante manjar blanco casero y coco rallado.' }
+            ]
+        };
+
+        // Estado del Carrito
+        let cart = [];
+
+        // Inicialización al cargar página
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCoffeeCards(coffeeProducts);
+            switchMenuTab('especialidad');
+        });
+
+        // Renderizar Tarjetas de Café
+        function renderCoffeeCards(products) {
+            const container = document.getElementById('coffee-grid');
+            container.innerHTML = '';
+
+            products.forEach(p => {
+                const notesHtml = p.notes.map(n => `<span class="text-[10px] bg-brand-gold/10 text-brand-gold border border-brand-gold/20 px-2.5 py-1 rounded-full font-medium">${n}</span>`).join('');
+                
+                const card = document.createElement('div');
+                card.className = "bg-brand-roasted/40 border border-brand-gold/20 rounded-2xl overflow-hidden shadow-xl hover:border-brand-gold/60 transition-all flex flex-col group";
+                
+                card.innerHTML = `
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-brand-dark/90 text-brand-gold text-xs font-bold px-3 py-1 rounded-full border border-brand-gold/30 backdrop-blur-sm">
+                            ${p.score}
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="text-[11px] text-brand-gold font-semibold uppercase tracking-wider">${p.originName}</span>
+                            <h3 class="font-serif text-xl font-bold text-brand-cream mt-1">${p.name}</h3>
+                            <p class="text-xs text-brand-creamdark/70 mt-2 line-clamp-2">${p.desc}</p>
+                            
+                            <!-- Notes -->
+                            <div class="flex flex-wrap gap-1.5 mt-3">
+                                ${notesHtml}
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-brand-gold/10 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-brand-creamdark/60 block">Bolsa 250g</span>
+                                <span class="font-serif text-xl font-bold text-brand-gold">S/ ${p.price.toFixed(2)}</span>
+                            </div>
+                            <button onclick="addToCart('${p.id}')" class="px-4 py-2.5 bg-brand-gold text-brand-dark rounded-xl font-bold text-xs hover:bg-yellow-400 transition-colors flex items-center gap-2">
+                                <i class="fa-solid fa-plus"></i> Añadir
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Filtrar productos de café
+        function filterCoffee(origin, btn) {
+            document.querySelectorAll('#origin-filters .filter-btn').forEach(b => {
+                b.classList.remove('bg-brand-gold', 'text-brand-dark');
+                b.classList.add('bg-brand-roasted', 'text-brand-cream');
+            });
+
+            btn.classList.remove('bg-brand-roasted', 'text-brand-cream');
+            btn.classList.add('bg-brand-gold', 'text-brand-dark');
+
+            if (origin === 'todos') {
+                renderCoffeeCards(coffeeProducts);
+            } else {
+                const filtered = coffeeProducts.filter(p => p.origin === origin);
+                renderCoffeeCards(filtered);
+            }
+        }
+
+        // Cambiar pestañas del menú de la cafetería
+        function switchMenuTab(category, btnElement = null) {
+            if (btnElement) {
+                document.querySelectorAll('.menu-tab-btn').forEach(b => {
+                    b.classList.remove('bg-brand-roasted', 'text-brand-cream', 'shadow-sm');
+                    b.classList.add('text-brand-dark');
+                });
+                btnElement.classList.add('bg-brand-roasted', 'text-brand-cream', 'shadow-sm');
+            }
+
+            const items = menuItems[category] || [];
+            const container = document.getElementById('menu-items-container');
+            container.innerHTML = '';
+
+            items.forEach(item => {
+                const div = document.createElement('div');
+                div.className = "bg-white p-5 rounded-2xl border border-brand-creamdark shadow-sm flex justify-between items-start gap-4 hover:border-brand-amber/30 transition-all";
+                div.innerHTML = `
+                    <div class="space-y-1">
+                        <h4 class="font-serif font-bold text-brand-dark text-base">${item.name}</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed">${item.desc}</p>
+                    </div>
+                    <span class="font-serif font-bold text-brand-amber text-sm shrink-0 bg-brand-cream px-3 py-1 rounded-full border border-brand-amber/20">${item.price}</span>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Sistema de Carrito de Compras
+        function addToCart(productId) {
+            const product = coffeeProducts.find(p => p.id === productId);
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartUI();
+            showToast(`Añadido: ${product.name}`);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        function changeQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items-container');
+            const totalBadge = document.getElementById('cart-badge');
+            const totalBadgeMobile = document.getElementById('cart-badge-mobile');
+            const totalPriceEl = document.getElementById('cart-total-price');
+
+            const totalItems = cart.reduce((sum, i) => sum + i.quantity, 0);
+            const totalPrice = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+
+            // Badges
+            if (totalItems > 0) {
+                totalBadge.innerText = totalItems;
+                totalBadge.classList.remove('hidden');
+                totalBadgeMobile.innerText = totalItems;
+                totalBadgeMobile.classList.remove('hidden');
+            } else {
+                totalBadge.classList.add('hidden');
+                totalBadgeMobile.classList.add('hidden');
+            }
+
+            totalPriceEl.innerText = `S/ ${totalPrice.toFixed(2)}`;
+
+            // List render
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-gray-400">
+                        <i class="fa-solid fa-basket-shopping text-4xl mb-3 text-brand-creamdark"></i>
+                        <p class="text-sm">Tu carrito está vacío por ahora.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = '';
+            cart.forEach(item => {
+                const div = document.createElement('div');
+                div.className = "flex items-center gap-4 bg-brand-cream/50 p-3 rounded-xl border border-brand-creamdark";
+                div.innerHTML = `
+                    <img src="${item.image}" class="w-16 h-16 rounded-lg object-cover">
+                    <div class="flex-1">
+                        <h4 class="font-serif font-bold text-xs text-brand-dark">${item.name}</h4>
+                        <span class="text-xs text-brand-amber font-bold">S/ ${item.price.toFixed(2)}</span>
+                        <div class="flex items-center gap-2 mt-2">
+                            <button onclick="changeQuantity('${item.id}', -1)" class="w-5 h-5 bg-gray-200 text-dark rounded flex items-center justify-center text-xs font-bold">-</button>
+                            <span class="text-xs font-bold">${item.quantity}</span>
+                            <button onclick="changeQuantity('${item.id}', 1)" class="w-5 h-5 bg-gray-200 text-dark rounded flex items-center justify-center text-xs font-bold">+</button>
+                        </div>
+                    </div>
+                    <button onclick="removeFromCart('${item.id}')" class="text-gray-400 hover:text-red-500 p-2">
+                        <i class="fa-solid fa-trash-can text-sm"></i>
+                    </button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            const panel = document.getElementById('cart-panel');
+            
+            if (drawer.classList.contains('pointer-events-none')) {
+                drawer.classList.remove('pointer-events-none', 'opacity-0');
+                drawer.classList.add('opacity-100');
+                panel.classList.remove('translate-x-full');
+            } else {
+                panel.classList.add('translate-x-full');
+                drawer.classList.remove('opacity-100');
+                drawer.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío.');
+                return;
+            }
+            alert('¡Gracias por tu pedido! Redirigiendo a la pasarela de pago segura de Café Andino.');
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+
+        // Logica del Quiz / Test Interactivos
+        let quizAnswers = {};
+
+        function selectQuizOption(step, answer) {
+            quizAnswers[step] = answer;
+
+            if (step === 1) {
+                document.getElementById('quiz-step-1').classList.add('hidden');
+                document.getElementById('quiz-step-2').classList.remove('hidden');
+            } else if (step === 2) {
+                document.getElementById('quiz-step-2').classList.add('hidden');
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            const resultDiv = document.getElementById('quiz-result');
+            const titleEl = document.getElementById('quiz-recommended-title');
+            const descEl = document.getElementById('quiz-recommended-desc');
+            const addBtn = document.getElementById('quiz-add-btn');
+
+            let recommendedProduct = coffeeProducts[0]; // Fallback
+
+            if (quizAnswers[1] === 'dulce') {
+                recommendedProduct = coffeeProducts.find(p => p.id === 'cajamarca-bourbon') || coffeeProducts[1];
+            } else if (quizAnswers[1] === 'frutal') {
+                recommendedProduct = coffeeProducts.find(p => p.id === 'cusco-geisha') || coffeeProducts[0];
+            } else {
+                recommendedProduct = coffeeProducts.find(p => p.id === 'chanchamayo-typica') || coffeeProducts[2];
+            }
+
+            titleEl.innerText = recommendedProduct.name;
+            descEl.innerText = `Según tus preferencias (${quizAnswers[1]} y preparación en ${quizAnswers[2]}), este grano resalta el perfil ideal para tu taza diaria.`;
+            
+            addBtn.onclick = () => {
+                addToCart(recommendedProduct.id);
+                toggleCart();
+            };
+
+            resultDiv.classList.remove('hidden');
+        }
+
+        function resetQuiz() {
+            quizAnswers = {};
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('quiz-step-2').classList.add('hidden');
+            document.getElementById('quiz-step-1').classList.remove('hidden');
+        }
+
+        // Forms & Mobile Handlers
+        function handleBooking(e) {
+            e.preventDefault();
+            alert('¡Reserva recibida con éxito! Te hemos enviado un correo de confirmación.');
+            e.target.reset();
+        }
+
+        function handleNewsletter(e) {
+            e.preventDefault();
+            alert('¡Te has suscrito con éxito al Club Café Andino! Revisa tu bandeja de entrada.');
+            e.target.reset();
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.className = 'fa-solid fa-bars text-2xl';
+            } else {
+                icon.className = 'fa-solid fa-xmark text-2xl';
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast-msg');
+            const toastText = document.getElementById('toast-text');
+            toastText.innerText = message;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
